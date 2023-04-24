@@ -77,11 +77,11 @@ if enable_price_filter == 'y':
 
 current_url = driver.current_url
 products_list = []
-get_pagination = driver.find_element(By.CLASS_NAME, 'pagination-root-Ntd_O').find_elements(By.TAG_NAME, 'span')
+get_pagination = driver.find_element(By.CLASS_NAME, 'pagination-pagination-_FSNE').find_elements(By.TAG_NAME, 'span')
 pages_numbers = [i.text for i in get_pagination]
 products_amount = driver.find_element(By.CLASS_NAME, 'page-title-count-wQ7pG').text.replace(' ', '')
 print(f'found {products_amount} products, this may take some time...')
-for i in range(2, int(pages_numbers[-2]) + 1):
+for i in range(2, int(pages_numbers[-1]) + 1):
     driver.get(current_url + f'&p={i}')
     sleep(1)
     products = driver.find_elements(By.CLASS_NAME, 'iva-item-content-rejJg')
